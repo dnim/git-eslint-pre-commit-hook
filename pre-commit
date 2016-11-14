@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Provide eslint check and fix before commit
+# @author ksy
+
+echo ">> Check eslint syntax and provide auto-fix"
+
+declare lintResult=$(exec node_modules/.bin/eslint --fix src .)
+
+if [[ "$lintResult" == *"0 errors"* || "$lintResult" = "" ]]
+then echo ">> No errors. Commit is approved."
+exit 0
+else echo "!!! Eslint errors were detected. Please fix it and then re-try to commit. $lintResult"
+exit 1
+fi
