@@ -5,7 +5,7 @@
 
 echo ">> Check eslint syntax and provide auto-fix"
 
-declare lintResult=$(exec node_modules/.bin/eslint --fix src .)
+declare lintResult=$(exec node_modules/.bin/eslint --fix src/)
 
 if [[ "$lintResult" == *"0 errors"* || "$lintResult" = "" ]]
 then echo ">> No errors. Commit is approved."
