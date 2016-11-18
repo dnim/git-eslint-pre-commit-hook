@@ -1,11 +1,13 @@
 #!/bin/sh
+# TODO: check onli added to commit files
+# TODO: if eslint errors detected - propose to fix it automaticaly, if now errors after fix - add files again and allow to commit. Else - exit 1
 #
-# Provide eslint check and fix before commit
+# Provide eslint check
 # @author ksy
 
-echo ">> Check eslint syntax and provide auto-fix"
+echo ">> Check eslint syntax"
 
-declare lintResult=$(exec node_modules/.bin/eslint --fix src/)
+declare lintResult=$(exec node_modules/.bin/eslint src/)
 
 if [[ "$lintResult" == *"0 errors"* || "$lintResult" = "" ]]
 then echo ">> No errors. Commit is approved."
